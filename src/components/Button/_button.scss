@@ -1,0 +1,29 @@
+.button {
+  .uk-button {
+    transition: all 0.3s ease;
+  }
+  .uk-button-primary {
+    background-color: color(primary) !important;
+
+    &:hover {
+      background-color: darken(color(primary), 20%) !important;
+    }
+  }
+
+  .uk-button-secondary {
+    background-color: color(secondary) !important;
+
+    &:hover {
+      background-color: darken(color(secondary), 10%) !important;
+    }
+  }
+
+  .uk-button-tertiary {
+    background-color: color(tertiary) !important;
+    color: color(textWhite);
+
+    &:hover {
+      background-color: darken(color(tertiary), 10%) !important;
+    }
+  }
+}
