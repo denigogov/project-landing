@@ -4,6 +4,10 @@ import path from "path"; // Needed to handle aliases
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 3000,
+    host: true,
+  },
   css: {
     preprocessorOptions: {
       scss: {

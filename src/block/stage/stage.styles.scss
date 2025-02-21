@@ -1,0 +1,37 @@
+.b-stage {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+    center/cover url("../../assets/SaidGor_Landingpage.png") no-repeat;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem 1rem;
+  @include breakpoint(small) {
+    align-items: center;
+    padding: 0;
+    padding-left: spacing(large);
+  }
+
+  &-text {
+    & > * {
+      color: color(textWhite) !important;
+    }
+
+    &__heading {
+      font-size: clamp(2.813rem, 1rem + 2.918vw, 7.5rem);
+      font-weight: fontweight(bold);
+    }
+
+    .uk-text-lead {
+      font-weight: fontweight(light);
+      font-size: clamp(1.25rem, 0.778vw, 2.5rem);
+      text-wrap: balance;
+    }
+  }
+
+  button.uk-button-default {
+    color: color(textWhite);
+  }
+}

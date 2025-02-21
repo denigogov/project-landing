@@ -9,12 +9,12 @@ const Button: React.FC<ButtonTypes> = ({
   onClick,
 }) => {
   return (
-    <div className={`${className ?? ""} button`}>
+    <div className="button">
       {label && (
         <button
-          className={` uk-button  uk-button-${size ?? ""} uk-button-${
-            type ?? ""
-          }`}
+          className={` ${className} uk-button  uk-button-${
+            size ?? ""
+          } uk-button-${type ?? "default"}`}
           onClick={onClick}
         >
           {label ?? ""}
