@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 const Card: React.FC<CardTypes> = ({ button, text, title, icon }) => {
   UIkit.use(Icons);
   return (
-    <div className="card">
+    <article className="card">
       {icon && (
         <div
           className="card__icon-container"
@@ -29,7 +29,7 @@ const Card: React.FC<CardTypes> = ({ button, text, title, icon }) => {
           size={button?.size}
         />
       )}
-    </div>
+    </article>
   );
 };
 

@@ -9,9 +9,10 @@ interface BenifitsProps {
 
 const Benifits: React.FC<BenifitsProps> = ({ benifitsData }) => {
   return (
-    <section className="benefits uk-section">
+    <section className="benefits uk-section ">
       <div className="uk-container">
         <div className="benefits__text uk-text-center">
+          <p className="benefits__text-badge">Innovative Farming</p>
           {benifitsData.title && (
             <h2 className="benefits__title">{benifitsData?.title}</h2>
           )}
@@ -22,7 +23,7 @@ const Benifits: React.FC<BenifitsProps> = ({ benifitsData }) => {
         </div>
         {benifitsData.card?.length && (
           <div
-            className="uk-grid uk-child-width-1-3@m uk-text-center"
+            className="uk-grid uk-grid-divider uk-child-width-1-3@m uk-text-center"
             data-uk-grid
           >
             {benifitsData?.card?.map((item, i) => (
