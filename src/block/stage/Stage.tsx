@@ -14,13 +14,12 @@ const Stage: React.FC<StageProps> = ({ stageData }) => {
       <div className="b-stage">
         <div className="uk-width-1-2@s ">
           <div className="b-stage-text uk-width-1-2@l">
-            <h1 className="b-stage-text__heading">
-              Innovationen für die moderne Landwirtschaft
-            </h1>
-            <p className="uk-text-lead ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-              aliquid modi repudiandae sapiente totam quisquam?
-            </p>
+            {stageData?.stageTitle && (
+              <h1 className="b-stage-text__heading">{stageData?.stageTitle}</h1>
+            )}
+            {stageData?.stageSubTitle && (
+              <p className="uk-text-lead ">{stageData?.stageSubTitle}</p>
+            )}
           </div>
 
           {buttonData &&
@@ -30,7 +29,9 @@ const Stage: React.FC<StageProps> = ({ stageData }) => {
                   label={property?.label}
                   size={property?.size}
                   type={property.type}
-                  className=" uk-width-1-4@m uk-width-1-2"
+                  className={property?.className}
+                  href={property?.href}
+                  blank={property.blank}
                 />
               </div>
             ))}

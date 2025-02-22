@@ -7,18 +7,22 @@ const Button: React.FC<ButtonTypes> = ({
   type,
   className,
   onClick,
+  blank,
+  href,
 }) => {
   return (
     <div className="button">
       {label && (
-        <button
-          className={` ${className} uk-button  uk-button-${
-            size ?? ""
-          } uk-button-${type ?? "default"}`}
-          onClick={onClick}
-        >
-          {label ?? ""}
-        </button>
+        <a href={href ?? ""} target={blank ? "_blank" : "_parent"}>
+          <button
+            className={` ${className} uk-button  uk-button-${
+              size ?? ""
+            } uk-button-${type ?? "default"}`}
+            onClick={onClick}
+          >
+            {label ?? ""}
+          </button>
+        </a>
       )}
     </div>
   );
