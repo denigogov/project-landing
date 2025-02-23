@@ -18,12 +18,12 @@ body {
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: color(text);
+    background-color: color(backgroundBlack);
   }
 }
 

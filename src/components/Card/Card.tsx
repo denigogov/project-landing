@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 const Card: React.FC<CardTypes> = ({ button, text, title, icon }) => {
   UIkit.use(Icons);
   return (
-    <article className="card">
+    <article className="card ">
       {icon && (
         <div
           className="card__icon-container"

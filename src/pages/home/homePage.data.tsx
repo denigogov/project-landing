@@ -3,11 +3,40 @@ import { StageTypes } from "../../block/stage/stage.types";
 import icon1 from "../../assets/icons/agriculture-eco-farm-svgrepo-com.svg";
 import icon2 from "../../assets/icons/bulb-electric-energy-svgrepo-com.svg";
 import icon3 from "../../assets/icons/ecology-environment-nature-svgrepo-com.svg";
+import testImg from "../../assets/young-farmer-taking-care-his-business-1536x1032.png";
+import { StepsTypes } from "../../block/steps/steps.types";
+import { AboutTypes } from "../../block/about/about.types";
 
 interface HomepageTypes {
   stage: StageTypes;
   benifits: BenifitsType;
+  steps: StepsTypes;
+  about: AboutTypes;
 }
+
+const aboutData: AboutTypes = {
+  badge: "über uns",
+  title: "Warum Uns Wählen?",
+  subTitle: "Steigern Sie Ihre Effizienz mit unseren Drohnendiensten.",
+  copy: "Als Ihr zuverlässiger Partner für Drohnentechnologie in der Landwirtschaft bieten wir spezialisierte Lösungen für Weinbauern in Rheinland-Pfalz und Baden-Württemberg. Unsere Sprühdrohnen ermöglichen präzise Schädlingsbekämpfung und Düngung, angepasst an die Bedürfnisse des Weinbaus. Mit innovativer Technologie reduzieren wir Kosten, minimieren Umweltbelastung und maximieren Ihre Erträge – nachhaltig und effizient.",
+  button: {
+    label: "Mehr Erfahren",
+    blank: true,
+    type: "tertiary",
+    size: "large",
+    href: "https://www.saidgor.de/#/%C3%9Cber-Uns",
+  },
+  images: [
+    {
+      url: testImg,
+      alt: "Image from someone test",
+    },
+    {
+      url: testImg,
+      alt: "Image from someone test 123",
+    },
+  ],
+};
 
 export const homePageData: HomepageTypes = {
   stage: {
@@ -19,7 +48,7 @@ export const homePageData: HomepageTypes = {
         label: "Jetzt Beraten Lassen",
         size: "large",
         type: "primary",
-        href: "https://www.saidgor.de/#!/Kontakt",
+        href: "https://www.saidgor.de/#/Kontakt",
         blank: true,
       },
     ],
@@ -73,6 +102,39 @@ export const homePageData: HomepageTypes = {
           blank: true,
           type: "text",
           className: "benefits__button",
+        },
+      },
+    ],
+  },
+
+  about: aboutData,
+  steps: {
+    stepData: [
+      {
+        title: "Anmeldung",
+        subTitle:
+          "Registrieren Sie sich jetzt und nutzen Sie unsere Drohnendienste",
+        image: {
+          url: icon1,
+          alt: "Registrierungssymbol",
+        },
+      },
+      {
+        title: "Drohnen-Sprühen",
+        subTitle:
+          "Bestätigen Sie Ihre Anfrage für präzises Sprühen Ihrer Felder",
+        image: {
+          url: icon2,
+          alt: "Sprüh-Symbol",
+        },
+      },
+      {
+        title: "Ergebnisse",
+        subTitle:
+          "Erhalten Sie detaillierte Analysen und Ertragsberichte in Echtzeit",
+        image: {
+          url: icon3,
+          alt: "Ergebnissymbol",
         },
       },
     ],

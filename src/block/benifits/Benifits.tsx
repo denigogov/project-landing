@@ -13,28 +13,29 @@ const Benifits: React.FC<BenifitsProps> = ({ benifitsData }) => {
       <div className="uk-container">
         <div className="benefits__text uk-text-center">
           <p className="benefits__text-badge">Innovative Farming</p>
-          {benifitsData.title && (
+          {benifitsData?.title && (
             <h2 className="benefits__title">{benifitsData?.title}</h2>
           )}
 
-          {benifitsData.subTitle && (
+          {benifitsData?.subTitle && (
             <p className="benefits__subtitle">{benifitsData?.subTitle}</p>
           )}
         </div>
-        {benifitsData.card?.length && (
+        {benifitsData?.card?.length && (
           <div
-            className="uk-grid uk-grid-divider uk-child-width-1-3@m uk-text-center"
+            className="uk-grid uk-grid-divider uk-child-width-1-3@m uk-text-center "
             data-uk-grid
+            uk-grid
+            uk-scrollspy="cls: uk-animation-fade; target: .card;  repeat: false"
           >
             {benifitsData?.card?.map((item, i) => (
-              <React.Fragment key={i}>
-                <Card
-                  text={item.text}
-                  title={item.title}
-                  button={item.button}
-                  icon={item.icon}
-                />
-              </React.Fragment>
+              <Card
+                key={i}
+                text={item.text}
+                title={item.title}
+                button={item.button}
+                icon={item.icon}
+              />
             ))}
           </div>
         )}
