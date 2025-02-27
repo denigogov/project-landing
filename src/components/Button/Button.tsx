@@ -9,12 +9,14 @@ const Button: React.FC<ButtonTypes> = ({
   onClick,
   blank,
   href,
+  disabled,
 }) => {
   return (
     <div className="button">
       {label && (
         <a href={href ?? ""} target={blank ? "_blank" : "_parent"}>
           <button
+            disabled={disabled ? true : false}
             className={` ${className} uk-button  uk-button-${
               size ?? ""
             } uk-button-${type ?? "default"}`}

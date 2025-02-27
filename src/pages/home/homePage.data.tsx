@@ -14,6 +14,21 @@ interface HomepageTypes {
   about: AboutTypes;
 }
 
+const stageData: StageTypes = {
+  stageTitle: "Innovationen für die moderne Landwirtschaft",
+  stageSubTitle:
+    " Steigern Sie Ihre Ernteerträge mit präziser Drohnentechnologie – weniger Pestizide, höhere Effizienz.",
+  button: [
+    {
+      label: "Jetzt Beraten Lassen",
+      size: "large",
+      type: "primary",
+      href: "https://www.saidgor.de/#/Kontakt",
+      blank: true,
+    },
+  ],
+};
+
 const aboutData: AboutTypes = {
   badge: "über uns",
   title: "Warum Uns Wählen?",
@@ -38,105 +53,101 @@ const aboutData: AboutTypes = {
   ],
 };
 
+const benifitsData: BenifitsType = {
+  title: "Why Choose Our Drone Technology?",
+  subTitle:
+    " Increase your efficiency, reduce costs, and improve sustainability with precision farming.",
+
+  card: [
+    {
+      icon: {
+        name: icon1,
+        alt: "testIcon",
+      },
+      title: "Ernteerträge Steigern",
+      text: "Steigern Sie Ihre Erträge um bis zu 20 % durch präzise Drohnen-Kartierung und Überwachung",
+      button: {
+        label: "Mehr erfahren",
+        blank: true,
+        type: "text",
+        className: "benefits__button",
+      },
+    },
+
+    {
+      icon: {
+        name: icon2,
+        alt: "testIcon",
+      },
+      title: "Kosten Senken",
+      text: "Sparen Sie bis zu 30 % bei Pestizid- und Wasserverbrauch durch präzises Sprühen mit Drohnen.",
+      button: {
+        label: "Mehr erfahren",
+        blank: true,
+        type: "text",
+        className: "benefits__button",
+      },
+    },
+
+    {
+      icon: {
+        name: icon3,
+        alt: "testIcon",
+      },
+      title: "Zeit Sparen",
+      text: "Inspektionen Ihrer Felder in Stunden statt Tagen mit automatisierter Drohnentechnologie durchführen.",
+      button: {
+        label: "Mehr erfahren",
+        blank: true,
+        type: "text",
+        className: "benefits__button",
+      },
+    },
+  ],
+};
+
+const stepsData: StepsTypes = {
+  stepData: [
+    {
+      title: "Anmeldung",
+      subTitle:
+        "Registrieren Sie sich jetzt und nutzen Sie unsere Drohnendienste",
+      image: {
+        url: icon1,
+        alt: "Registrierungssymbol",
+      },
+    },
+    {
+      title: "Drohnen-Sprühen",
+      subTitle: "Bestätigen Sie Ihre Anfrage für präzises Sprühen Ihrer Felder",
+      image: {
+        url: icon2,
+        alt: "Sprüh-Symbol",
+      },
+    },
+    {
+      title: "Ergebnisse",
+      subTitle:
+        "Erhalten Sie detaillierte Analysen und Ertragsberichte in Echtzeit",
+      image: {
+        url: icon3,
+        alt: "Ergebnissymbol",
+      },
+    },
+  ],
+};
+
 export const homePageData: HomepageTypes = {
   stage: {
-    stageTitle: "Innovationen für die moderne Landwirtschaft",
-    stageSubTitle:
-      " Steigern Sie Ihre Ernteerträge mit präziser Drohnentechnologie – weniger Pestizide, höhere Effizienz.",
-    button: [
-      {
-        label: "Jetzt Beraten Lassen",
-        size: "large",
-        type: "primary",
-        href: "https://www.saidgor.de/#/Kontakt",
-        blank: true,
-      },
-    ],
+    ...stageData,
   },
 
   benifits: {
-    title: "Why Choose Our Drone Technology?",
-    subTitle:
-      " Increase your efficiency, reduce costs, and improve sustainability with precision farming.",
-
-    card: [
-      {
-        icon: {
-          name: icon1,
-          alt: "testIcon",
-        },
-        title: "Ernteerträge Steigern",
-        text: "Steigern Sie Ihre Erträge um bis zu 20 % durch präzise Drohnen-Kartierung und Überwachung",
-        button: {
-          label: "Mehr erfahren",
-          blank: true,
-          type: "text",
-          className: "benefits__button",
-        },
-      },
-
-      {
-        icon: {
-          name: icon2,
-          alt: "testIcon",
-        },
-        title: "Kosten Senken",
-        text: "Sparen Sie bis zu 30 % bei Pestizid- und Wasserverbrauch durch präzises Sprühen mit Drohnen.",
-        button: {
-          label: "Mehr erfahren",
-          blank: true,
-          type: "text",
-          className: "benefits__button",
-        },
-      },
-
-      {
-        icon: {
-          name: icon3,
-          alt: "testIcon",
-        },
-        title: "Zeit Sparen",
-        text: "Inspektionen Ihrer Felder in Stunden statt Tagen mit automatisierter Drohnentechnologie durchführen.",
-        button: {
-          label: "Mehr erfahren",
-          blank: true,
-          type: "text",
-          className: "benefits__button",
-        },
-      },
-    ],
+    ...benifitsData,
   },
 
   about: aboutData,
   steps: {
-    stepData: [
-      {
-        title: "Anmeldung",
-        subTitle:
-          "Registrieren Sie sich jetzt und nutzen Sie unsere Drohnendienste",
-        image: {
-          url: icon1,
-          alt: "Registrierungssymbol",
-        },
-      },
-      {
-        title: "Drohnen-Sprühen",
-        subTitle:
-          "Bestätigen Sie Ihre Anfrage für präzises Sprühen Ihrer Felder",
-        image: {
-          url: icon2,
-          alt: "Sprüh-Symbol",
-        },
-      },
-      {
-        title: "Ergebnisse",
-        subTitle:
-          "Erhalten Sie detaillierte Analysen und Ertragsberichte in Echtzeit",
-        image: {
-          url: icon3,
-          alt: "Ergebnissymbol",
-        },
-      },
-    ],
+    ...stepsData,
   },
 };

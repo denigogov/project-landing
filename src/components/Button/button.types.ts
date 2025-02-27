@@ -6,4 +6,5 @@ export interface ButtonTypes {
   href?: string;
   blank?: boolean;
   onClick?: () => void;
+  disabled?: boolean;
 }

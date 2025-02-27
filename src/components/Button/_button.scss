@@ -1,6 +1,10 @@
 .button {
   .uk-button {
     transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.6;
+    }
   }
   .uk-button-primary {
     background-color: color(primary) !important;

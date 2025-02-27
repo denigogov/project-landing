@@ -12,7 +12,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
       className="about uk-section"
       uk-scrollspy="cls:uk-animation-fade  target: .about;  repeat: true"
     >
-      <div className="uk-container">
+      <div className="uk-container uk-container-large">
         <div
           className="uk-grid uk-child-width-1-2@m uk-flex-middle"
           data-uk-grid
