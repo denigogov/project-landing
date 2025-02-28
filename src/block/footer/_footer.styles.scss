@@ -1,0 +1,61 @@
+.footer {
+  position: relative;
+  background-image: repeating-linear-gradient(
+      0deg,
+      hsla(202, 0%, 65%, 0.08) 0px,
+      hsla(202, 0%, 65%, 0.08) 1px,
+      transparent 1px,
+      transparent 11px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(202, 0%, 65%, 0.08) 0px,
+      hsla(202, 0%, 65%, 0.08) 1px,
+      transparent 1px,
+      transparent 11px
+    ),
+    linear-gradient(90deg, rgb(16, 24, 40), rgb(16, 24, 40));
+
+  padding: 40px 0 0;
+
+  nav {
+    padding: 10px 0;
+
+    a {
+      &:hover {
+        color: color(textWhite);
+      }
+    }
+  }
+
+  &__company {
+    padding: 0 0 10px;
+
+    p,
+    span {
+      padding: 0 10px;
+      color: color(textWhite);
+    }
+  }
+
+  &__socialNetwork {
+    display: flex;
+    justify-content: center;
+    gap: spacing(small);
+  }
+
+  .scrollTop {
+    position: absolute;
+    bottom: 120px;
+    right: 30px;
+
+    @include breakpoint(medium) {
+      bottom: unset;
+    }
+
+    svg {
+      filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(2%)
+        hue-rotate(126deg) brightness(115%) contrast(100%);
+    }
+  }
+}

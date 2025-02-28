@@ -12,4 +12,5 @@ export interface AboutTypes {
   copy?: string;
   button?: ButtonTypes;
   images?: Images;
+  sliderImages?: Images;
 }

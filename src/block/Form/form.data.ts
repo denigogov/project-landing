@@ -53,7 +53,7 @@ export const formData: FormTypes = {
     submitButton: {
       label: "Jetzt Kontakt Aufnehmen",
       size: "medium",
-      type: "tertiary",
+      type: "primary",
       className: "uk-width-1-1",
     },
 

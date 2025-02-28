@@ -25,7 +25,7 @@ const Benifits: React.FC<BenifitsProps> = ({ benifitsData }) => {
           <div
             className="uk-grid uk-grid-divider uk-child-width-1-3@m uk-text-center "
             data-uk-grid
-            uk-grid
+            uk-grid="true"
             uk-scrollspy="cls: uk-animation-fade; target: .card;  repeat: false"
           >
             {benifitsData?.card?.map((item, i) => (

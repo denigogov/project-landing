@@ -3,15 +3,20 @@ import { StageTypes } from "../../block/stage/stage.types";
 import icon1 from "../../assets/icons/agriculture-eco-farm-svgrepo-com.svg";
 import icon2 from "../../assets/icons/bulb-electric-energy-svgrepo-com.svg";
 import icon3 from "../../assets/icons/ecology-environment-nature-svgrepo-com.svg";
-import testImg from "../../assets/young-farmer-taking-care-his-business-1536x1032.png";
+
+import about_3 from "../../assets/about-us-.webp";
+import about_2 from "../../assets/New Project.webp";
+import about_1 from "../../assets/about-us_1.webp";
 import { StepsTypes } from "../../block/steps/steps.types";
 import { AboutTypes } from "../../block/about/about.types";
+import { FooterTypes } from "../../block/footer/footer.types";
 
 interface HomepageTypes {
   stage: StageTypes;
   benifits: BenifitsType;
   steps: StepsTypes;
   about: AboutTypes;
+  footer: FooterTypes;
 }
 
 const stageData: StageTypes = {
@@ -43,12 +48,23 @@ const aboutData: AboutTypes = {
   },
   images: [
     {
-      url: testImg,
+      url: about_1,
       alt: "Image from someone test",
     },
     {
-      url: testImg,
-      alt: "Image from someone test 123",
+      url: about_2,
+      alt: "Image From Drone Controll",
+    },
+  ],
+
+  sliderImages: [
+    {
+      url: about_1,
+      alt: "Image from someone test",
+    },
+    {
+      url: about_3,
+      alt: "Image From Drone Controll",
     },
   ],
 };
@@ -137,6 +153,75 @@ const stepsData: StepsTypes = {
   ],
 };
 
+const footerData: FooterTypes = {
+  companyData: [
+    {
+      label: "Gewerbepark Cité 4 76532 Baden-Baden Deutschland",
+      icon: "location",
+    },
+    {
+      label: "+49 0176 20187322",
+      icon: "receiver",
+    },
+    {
+      label: "info@saidgor.de",
+      icon: "mail",
+    },
+  ],
+
+  footerNav: [
+    {
+      label: "Über uns",
+      blank: true,
+      href: "https://www.saidgor.de/",
+    },
+
+    {
+      label: "Leistungen",
+      blank: true,
+      href: "https://www.saidgor.de/",
+    },
+    {
+      label: "Kontakt",
+      blank: true,
+      href: "https://www.saidgor.de/",
+    },
+    {
+      label: "Impressum",
+      blank: true,
+      href: "https://www.saidgor.de/drohnendienstleister-karlsruhe-impressum/",
+    },
+    {
+      label: "Datenschutzerkärung",
+      blank: true,
+      href: "https://www.saidgor.de/datenschutzerkarung-saidgor-drone-service/",
+    },
+  ],
+
+  socialNetwork: [
+    {
+      name: "facebook",
+      href: "https://facebook.com/",
+      message: "Visit Our Facebook Page",
+    },
+
+    {
+      name: "instagram",
+      message: "Build in progress",
+    },
+    {
+      name: "whatsapp",
+      href: "https://wa.me/+491638843357?text=Hallo!%20Ich%20habe%20eine%20Frage%20zu%20euren%20Drohnenservices.",
+      message: "Quick Message in WhatsApp",
+    },
+    {
+      name: "linkedin",
+      href: "https://www.linkedin.com/in/said-gaaloul-379111308/",
+      message: "Checkout Out LinkedIn Profile",
+    },
+  ],
+};
+
 export const homePageData: HomepageTypes = {
   stage: {
     ...stageData,
@@ -149,5 +234,9 @@ export const homePageData: HomepageTypes = {
   about: aboutData,
   steps: {
     ...stepsData,
+  },
+
+  footer: {
+    ...footerData,
   },
 };
