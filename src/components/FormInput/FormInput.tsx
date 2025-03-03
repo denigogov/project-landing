@@ -1,9 +1,10 @@
 import "./_formInput.scss";
 import Button from "../Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-// import ReCAPTCHA from "react-google-recaptcha";
-import React from "react";
+import React, { useRef } from "react";
 import { FormTypes } from "../../block/Form/form.types";
+import ReCAPTCHA from "react-google-recaptcha";
+import { sendForm } from "../../utils/SendForm";
 
 export type Inputs = {
   fullname: string;
@@ -16,9 +17,12 @@ export type Inputs = {
 interface FormInputProps {
   inputData: FormTypes;
 }
+const RECHAPTA_SITE_KEY = import.meta.env.VITE_GOOGLE_RECHAPTA_KEY as string;
 
 const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
-  // const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+
+  // const [recaptchaLoaded, setRecaptchaLoaded] = useState<boolean>(false);
 
   const inputLabelData = inputData?.formInputs;
 
@@ -26,7 +30,7 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
     register,
     handleSubmit,
     watch,
-    // reset,
+    reset,
     formState: { errors },
   } = useForm<Inputs>({
     mode: "onTouched",
@@ -40,10 +44,28 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
   });
 
   // const [recaptchaLoaded, setRecaptchaLoaded] = useState<boolean>(false);
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      console.log(data);
+      const token = await recaptchaRef?.current?.executeAsync();
+
+      recaptchaRef?.current?.reset();
+
+      if (!token) return;
+
+      const formData = {
+        ...data,
+        "g-recaptcha-response": token,
+      };
+
+      sendForm({
+        reset,
+        data: formData,
+        responseMessage: {
+          success: "Ihre Nachricht wurde erfolgreich gesendet!",
+          error:
+            "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+        },
+      });
     } catch (error) {
       console.error("Error during form submission:", error);
     }
@@ -199,7 +221,12 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
             className={inputLabelData.submitButton?.className}
           />
         </div>
-        <br />
+        <br />{" "}
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
+          sitekey={RECHAPTA_SITE_KEY}
+        />
         <div>
           <p className="uk-text-meta uk-text-break">
             Diese Website ist durch reCAPTCHA geschützt und es gelten die{" "}

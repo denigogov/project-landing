@@ -2,8 +2,6 @@ import FormInput from "../../components/FormInput/FormInput";
 import { formData } from "./form.data";
 import "./_form.styles.scss";
 
-// Add UIKit icons module
-
 const Form: React.FC = () => {
   return (
     <div className="form">
