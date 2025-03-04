@@ -41,7 +41,7 @@
     }
 
     &__heading {
-      font-size: clamp(2.813rem, 1rem + 2.918vw, 7.5rem);
+      font-size: clamp(2.813rem, 1rem + 2.718vw, 7.5rem);
       font-weight: fontweight(bold);
     }
 
@@ -54,5 +54,10 @@
 
   button.uk-button-default {
     color: color(textWhite);
+  }
+
+  // added as tertiary because the primary button make some problem with size and for some reason this fit to mobile view!
+  .uk-button-tertiary {
+    background-color: color(primary) !important;
   }
 }

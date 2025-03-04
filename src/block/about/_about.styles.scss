@@ -93,11 +93,12 @@
         height: 400px;
         width: 300px;
         object-fit: cover;
+        border-radius: 10%;
+
         &:hover {
           transform: scale(1.05); // Slightly scale up on hover
         }
 
-        border-radius: 10%;
         &:first-child {
           margin-top: -20px;
         }
@@ -107,5 +108,9 @@
         }
       }
     }
+  }
+
+  &__video video {
+    border-radius: 10px;
   }
 }

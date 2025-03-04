@@ -29,7 +29,7 @@ const Stage: React.FC<StageProps> = ({ stageData }) => {
                   label={property?.label}
                   size={property?.size}
                   type={property.type}
-                  className={property?.className}
+                  className="b-stage__button"
                   href={property?.href}
                   blank={property.blank}
                 />

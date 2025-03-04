@@ -5,6 +5,6 @@ export interface ButtonTypes {
   className?: string;
   href?: string;
   blank?: boolean;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
 }

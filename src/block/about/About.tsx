@@ -1,16 +1,24 @@
 import "./_about.styles.scss";
 import Button from "../../components/Button/Button";
 import { AboutTypes } from "./about.types";
+import { useState } from "react";
 
 interface AboutProps {
   aboutData: AboutTypes;
 }
 
 const About: React.FC<AboutProps> = ({ aboutData }) => {
+  const [toggleImage, setToggleImage] = useState<boolean>(false);
+
+  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setToggleImage((a) => !a);
+  };
+
   return (
     <section
       className="about uk-section"
-      uk-scrollspy="cls:uk-animation-fade  target: .about;  repeat: true"
+      uk-scrollspy="cls:uk-animation-fade  target: .about;  repeat: false"
     >
       <div className="uk-container uk-container-large">
         <div
@@ -25,11 +33,11 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
               {aboutData?.title && (
                 <h1 className="about__heading-title">{aboutData?.title}</h1>
               )}
+
               {aboutData?.subTitle && (
                 <p className="about__heading-subtitle">{aboutData?.subTitle}</p>
               )}
             </div>
-
             {aboutData?.copy && (
               <p className="about__copy">{aboutData?.copy}</p>
             )}
@@ -44,11 +52,18 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                   onClick={aboutData?.button?.onClick}
                   size={aboutData?.button?.size}
                 />
-              )}
-            </div>
+              )}{" "}
+              <br />
+              <Button
+                label={!toggleImage ? "Bilder anzeigen" : "Video anzeigen"}
+                type="link"
+                size="small"
+                onClick={handleToggle}
+              />
+            </div>{" "}
           </div>
 
-          {aboutData?.images?.length && (
+          {aboutData?.images?.length && toggleImage && (
             <div
               className=" about__images "
               uk-scrollspy="cls: uk-animation-slide-bottom  target: .about__images; delay: 500"
@@ -62,6 +77,22 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                   loading="lazy"
                 />
               ))}
+            </div>
+          )}
+
+          {aboutData?.video && !toggleImage && (
+            <div
+              className="about__video"
+              uk-scrollspy="cls: uk-animation-slide-bottom  target: .about__images; delay: 500"
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                src={aboutData?.video}
+                about="landwirtchaft drone"
+                uk-video="autoplay: inview"
+              ></video>
             </div>
           )}
         </div>

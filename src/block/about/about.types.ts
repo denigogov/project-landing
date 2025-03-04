@@ -13,4 +13,5 @@ export interface AboutTypes {
   button?: ButtonTypes;
   images?: Images;
   sliderImages?: Images;
+  video?: string;
 }
