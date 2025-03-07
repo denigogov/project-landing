@@ -30,4 +30,16 @@
       background-color: darken(color(tertiary), 10%) !important;
     }
   }
+
+  &__spinner {
+    width: 35px;
+    margin: 0 auto;
+    animation: spinnerRotate infinite 1.3s linear;
+  }
+
+  @keyframes spinnerRotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }

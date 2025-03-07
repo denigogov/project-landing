@@ -7,4 +7,5 @@ export interface ButtonTypes {
   blank?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
+  loading?: boolean;
 }

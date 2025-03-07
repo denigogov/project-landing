@@ -1,7 +1,7 @@
 import "./_formInput.scss";
 import Button from "../Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FormTypes } from "../../block/Form/form.types";
 import ReCAPTCHA from "react-google-recaptcha";
 import { sendForm } from "../../utils/SendForm";
@@ -18,18 +18,11 @@ interface FormInputProps {
   inputData: FormTypes;
 }
 
-const SERVICE_ID = import.meta.env.VITE_SERVICE_ID as string;
-const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID as string;
-const KEY_PUBLIC = import.meta.env.VITE_KEY_PUBLIC as string;
 const RECHAPTA_SITE_KEY = import.meta.env.VITE_GOOGLE_RECHAPTA_KEY as string;
-const test = import.meta.env.VITE_TEST as string;
 
 const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
-
-  console.log("from input", SERVICE_ID);
-  console.log("from input", TEMPLATE_ID);
-  console.log("from input", KEY_PUBLIC);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // const [recaptchaLoaded, setRecaptchaLoaded] = useState<boolean>(false);
 
@@ -56,10 +49,10 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const token = await recaptchaRef?.current?.executeAsync();
-
       recaptchaRef?.current?.reset();
 
       if (!token) return;
+      setLoading(true);
 
       const formData = {
         ...data,
@@ -69,6 +62,7 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
       sendForm({
         reset,
         data: formData,
+        setLoading,
         responseMessage: {
           success: "Ihre Nachricht wurde erfolgreich gesendet!",
           error:
@@ -76,7 +70,7 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
         },
       });
     } catch (error) {
-      console.error("Error during form submission:", error);
+      setLoading(false);
     }
   };
 
@@ -228,6 +222,7 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
             type={inputLabelData.submitButton?.type}
             size={inputLabelData.submitButton?.size}
             className={inputLabelData.submitButton?.className}
+            loading={loading}
           />
         </div>
         <br />{" "}
@@ -252,7 +247,7 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
               target="_blank"
               href="https://policies.google.com/terms"
             >
-              Nutzungsbedingungen {test}
+              Nutzungsbedingungen
             </a>{" "}
             von Google.
           </p>
