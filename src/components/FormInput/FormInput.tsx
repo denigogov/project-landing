@@ -17,10 +17,19 @@ export type Inputs = {
 interface FormInputProps {
   inputData: FormTypes;
 }
+
+const SERVICE_ID = import.meta.env.VITE_SERVICE_ID as string;
+const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID as string;
+const KEY_PUBLIC = import.meta.env.VITE_KEY_PUBLIC as string;
 const RECHAPTA_SITE_KEY = import.meta.env.VITE_GOOGLE_RECHAPTA_KEY as string;
+const test = import.meta.env.VITE_TEST as string;
 
 const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+
+  console.log("from input", SERVICE_ID);
+  console.log("from input", TEMPLATE_ID);
+  console.log("from input", KEY_PUBLIC);
 
   // const [recaptchaLoaded, setRecaptchaLoaded] = useState<boolean>(false);
 
@@ -243,7 +252,7 @@ const FormInput: React.FC<FormInputProps> = ({ inputData }) => {
               target="_blank"
               href="https://policies.google.com/terms"
             >
-              Nutzungsbedingungen
+              Nutzungsbedingungen {test}
             </a>{" "}
             von Google.
           </p>
