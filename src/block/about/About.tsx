@@ -1,18 +1,59 @@
 import "./_about.styles.scss";
 import Button from "../../components/Button/Button";
 import { AboutTypes } from "./about.types";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import playButton from "../../assets/icons/playButton.svg";
 
 interface AboutProps {
   aboutData: AboutTypes;
 }
 
 const About: React.FC<AboutProps> = ({ aboutData }) => {
-  const [toggleImage, setToggleImage] = useState<boolean>(false);
+  // const [toggleImage, setToggleImage] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [hasPlayedOnce, setHasPlayedOnce] = useState<boolean>(false);
 
-  const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setToggleImage((a) => !a);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   e.preventDefault();
+  //   setToggleImage((prev) => !prev);
+  // };
+
+  // Video Logic
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || hasPlayedOnce) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.muted = true;
+          video
+            .play()
+            .catch((error) => console.error("Autoplay failed:", error));
+
+          const timer = setTimeout(() => {
+            video.pause();
+            setIsPlaying(false);
+            setHasPlayedOnce(true);
+          }, 5000);
+
+          return () => clearTimeout(timer);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [hasPlayedOnce]);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
   return (
@@ -53,17 +94,17 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                   size={aboutData?.button?.size}
                 />
               )}{" "}
-              <br />
+              {/* <br />
               <Button
                 label={!toggleImage ? "Bilder anzeigen" : "Video anzeigen"}
                 type="link"
                 size="small"
                 onClick={handleToggle}
-              />
+              /> */}
             </div>{" "}
           </div>
 
-          {aboutData?.images?.length && toggleImage && (
+          {/* {aboutData?.images?.length && toggleImage && (
             <div
               className=" about__images "
               uk-scrollspy="cls: uk-animation-slide-bottom  target: .about__images; delay: 500"
@@ -78,21 +119,29 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                 />
               ))}
             </div>
-          )}
+          )} */}
 
-          {aboutData?.video && !toggleImage && (
-            <div
-              className="about__video"
-              uk-scrollspy="cls: uk-animation-slide-bottom  target: .about__images; delay: 500"
-            >
+          {aboutData?.video && (
+            <div className="about__video">
               <video
-                autoPlay
+                ref={videoRef}
+                controls={false}
                 muted
-                loop
-                src={aboutData?.video}
-                about="landwirtchaft drone"
-                uk-video="autoplay: inview"
-              ></video>
+                playsInline
+                loop={isPlaying && true}
+              >
+                <source src={aboutData.video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              {!isPlaying && (
+                <span className="about__video-playButton">
+                  <img
+                    src={playButton}
+                    alt="play-button"
+                    onClick={handlePlay}
+                  />
+                </span>
+              )}
             </div>
           )}
         </div>

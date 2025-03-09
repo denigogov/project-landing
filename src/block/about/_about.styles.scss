@@ -110,7 +110,29 @@
     }
   }
 
-  &__video video {
-    border-radius: 10px;
+  &__video {
+    position: relative;
+
+    & video {
+      border-radius: 10px;
+    }
+
+    &-playButton {
+      cursor: pointer;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-20%, -50%);
+        width: 60px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          transform: translate(-20%, -50%) scale(1.2);
+          opacity: 0.9;
+          filter: drop-shadow(0px 0px 10px rgba(170, 222, 162, 0.7));
+        }
+      }
+    }
   }
 }
